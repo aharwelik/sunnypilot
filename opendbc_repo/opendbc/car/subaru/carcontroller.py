@@ -53,8 +53,7 @@ class CarController(CarControllerBase, SnGCarController):
 
         if CC.latActive:  # only send when actually engaged
           can_sends.append(subarucan.create_steering_control_angle(
-              self.packer, apply_steer, CC.latActive,
-              CanBus.alt if self.CP.flags & SubaruFlags.GLOBAL_GEN2 else CanBus.main))
+            self.packer, apply_steer, CC.latActive))
       else:
         apply_torque = int(round(actuators.torque * self.p.STEER_MAX))
 
