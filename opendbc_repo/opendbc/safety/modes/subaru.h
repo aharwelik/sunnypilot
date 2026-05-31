@@ -28,6 +28,7 @@
 #define MSG_SUBARU_Brake_Pedal           0x139U
 
 #define MSG_SUBARU_ES_LKAS               0x122U
+#define MSG_SUBARU_ES_LKAS_ANGLE         0x124U
 #define MSG_SUBARU_ES_Brake              0x220U
 #define MSG_SUBARU_ES_Distance           0x221U
 #define MSG_SUBARU_ES_Status             0x222U
