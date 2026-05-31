@@ -414,8 +414,8 @@ void pandad_run(Panda *panda) {
       engaged_mads = process_mads_heartbeat(&sm);
       is_onroad = params.getBool("IsOnroad");
       always_offroad = panda_safety.getOffroadMode();
-      process_panda_state(panda, &pm, engaged, engaged_mads, is_onroad, spoofing_started, always_offroad);
       panda_safety.configureSafetyMode(is_onroad);
+      process_panda_state(panda, &pm, engaged, engaged_mads, is_onroad, spoofing_started, always_offroad);
     }
 
     // Send out peripheralState at 2Hz
