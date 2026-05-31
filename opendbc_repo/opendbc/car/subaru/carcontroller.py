@@ -51,7 +51,8 @@ class CarController(CarControllerBase, SnGCarController):
         self.apply_angle_last = apply_steer
         self.lat_active_prev = CC.latActive
         can_sends.append(subarucan.create_steering_control_angle(
-          self.packer, apply_steer, CC.latActive))
+          self.packer, apply_steer, CC.latActive,
+          CanBus.alt if self.CP.flags & SubaruFlags.GLOBAL_GEN2 else CanBus.main))
       else:
         apply_torque = int(round(actuators.torque * self.p.STEER_MAX))
 
