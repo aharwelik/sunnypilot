@@ -115,6 +115,7 @@ class CarController(CarControllerBase, SnGCarController):
 
     else:
       if self.frame % 10 == 0:
+       if not (self.CP.flags & SubaruFlags.LKAS_ANGLE):
         can_sends.append(subarucan.create_es_dashstatus(self.packer, self.frame // 10, CS.es_dashstatus_msg, CC.enabled,
                                                         self.CP.openpilotLongitudinalControl, CC.longActive, hud_control.leadVisible))
 
