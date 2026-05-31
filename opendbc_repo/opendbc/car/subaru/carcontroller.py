@@ -45,14 +45,16 @@ class CarController(CarControllerBase, SnGCarController):
           CC.actuators.steeringAngleDeg, self.apply_angle_last, CS.out.vEgoRaw,
           CS.out.steeringAngleDeg, CC.latActive, self.p.ANGLE_LIMITS)
 
-      if not CC.latActive:
-        apply_steer = CS.out.steeringAngleDeg
+        if not CC.latActive:
+          apply_steer = CS.out.steeringAngleDeg
 
         self.apply_angle_last = apply_steer
         self.lat_active_prev = CC.latActive
-        can_sends.append(subarucan.create_steering_control_angle(
-          self.packer, apply_steer, CC.latActive,
-          CanBus.alt if self.CP.flags & SubaruFlags.GLOBAL_GEN2 else CanBus.main))
+
+        if CC.latActive:  # only send when actually engaged
+          can_sends.append(subarucan.create_steering_control_angle(
+              self.packer, apply_steer, CC.latActive,
+              CanBus.alt if self.CP.flags & SubaruFlags.GLOBAL_GEN2 else CanBus.main))
       else:
         apply_torque = int(round(actuators.torque * self.p.STEER_MAX))
 
