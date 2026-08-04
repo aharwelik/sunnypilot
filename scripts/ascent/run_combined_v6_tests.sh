@@ -25,6 +25,7 @@ run_step() {
 }
 
 run_step static_isolation "$PYTHON_BIN" scripts/ascent/audit_combined_v6_isolation.py
+run_step canonical_build "$SCONS_BIN" -j"${SCONS_JOBS:-8}"
 run_step stop_obstacle_tests "$PYTHON_BIN" -m pytest -q sunnypilot/selfdrive/controls/lib/stop_obstacle/tests
 run_step overtake_advisor_tests "$PYTHON_BIN" -m pytest -q sunnypilot/selfdrive/controls/lib/overtake_advisor/tests
 run_step map_regression "$PYTHON_BIN" -m pytest -q sunnypilot/selfdrive/controls/lib/smart_cruise_control/tests/test_map_controller.py
@@ -48,7 +49,6 @@ for module in (
 ):
   importlib.import_module(module)
 PY
-run_step canonical_build "$SCONS_BIN" -j"${SCONS_JOBS:-8}"
 
 cat > "${RESULT_DIR}/ascent_v6_test_report.json" <<'JSON'
 {
