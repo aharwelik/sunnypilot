@@ -11,6 +11,7 @@ import pyray as rl
 from openpilot.selfdrive.ui.layouts.settings import settings as OP
 from openpilot.selfdrive.ui.layouts.settings.firehose import FirehoseLayout
 from openpilot.selfdrive.ui.layouts.settings.toggles import TogglesLayout
+from openpilot.selfdrive.ui.sunnypilot.layouts.settings.ascent_v6 import AscentV6Layout
 from openpilot.selfdrive.ui.sunnypilot.layouts.settings.cruise import CruiseLayout
 from openpilot.selfdrive.ui.sunnypilot.layouts.settings.developer import DeveloperLayoutSP
 from openpilot.selfdrive.ui.sunnypilot.layouts.settings.device import DeviceLayoutSP
@@ -50,6 +51,7 @@ OP.PanelType = IntEnum(
     "NAVIGATION",
     "TRIPS",
     "VEHICLE",
+    "ASCENT_V6",
   ],
   start=0,
 )
@@ -123,6 +125,7 @@ class SettingsLayoutSP(OP.SettingsLayout):
       # OP.PanelType.NAVIGATION: PanelInfo(tr_noop("Navigation"), NavigationLayout(), icon="../../sunnypilot/selfdrive/assets/offroad/icon_map.png"),
       OP.PanelType.TRIPS: PanelInfo(tr_noop("Trips"), TripsLayout(), icon="../../sunnypilot/selfdrive/assets/offroad/icon_trips.png"),
       OP.PanelType.VEHICLE: PanelInfo(tr_noop("Vehicle"), VehicleLayout(), icon="../../sunnypilot/selfdrive/assets/offroad/icon_vehicle.png"),
+      OP.PanelType.ASCENT_V6: PanelInfo(tr_noop("Ascent V6"), AscentV6Layout(), icon="../../sunnypilot/selfdrive/assets/offroad/icon_lateral.png"),
       OP.PanelType.FIREHOSE: PanelInfo(tr_noop("Firehose"), FirehoseLayout(), icon="../../sunnypilot/selfdrive/assets/offroad/icon_firehose.png"),
       OP.PanelType.DEVELOPER: PanelInfo(tr_noop("Developer"), DeveloperLayoutSP(), icon="icons/shell.png"),
     }
