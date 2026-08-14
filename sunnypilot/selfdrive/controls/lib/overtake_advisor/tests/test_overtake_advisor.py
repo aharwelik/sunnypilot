@@ -45,6 +45,10 @@ def test_slow_lead_is_live_shadow_advisory_only():
     ({"driver_gas": True}, "DRIVER_OVERRIDE"),
     ({"steering_fault": True}, "STEERING_FAULT"),
     ({"stale_model": True}, "STALE_MODEL"),
+    ({"road_edge_detected": True}, "ROAD_EDGE"),
+    ({"occupancy_known": False}, "OCCUPANCY_UNKNOWN"),
+    ({"navigation_contradiction": True}, "NAVIGATION_CONTRADICTION"),
+    ({"driver_monitoring_valid": False}, "DRIVER_MONITORING_INVALID"),
   ],
 )
 def test_rejection_gates(kwargs, reason):
@@ -70,4 +74,3 @@ def test_simulation_request_requires_non_live_runtime_proof():
   )
   assert result.state == OvertakeState.DRIVER_REQUESTED
   assert result.simulated_lane_change_request
-

@@ -8,7 +8,7 @@ import pyray as rl
 
 from openpilot.selfdrive.ui.mici.onroad.hud_renderer import HudRenderer
 from openpilot.selfdrive.ui.sunnypilot.onroad.blind_spot_indicators import BlindSpotIndicators
-from openpilot.sunnypilot.selfdrive.ascent_v6.status import DEVELOPMENT_LABEL
+from openpilot.sunnypilot.selfdrive.ascent_v7.status import DEVELOPMENT_LABEL
 from openpilot.system.ui.lib.application import FontWeight, gui_app
 from openpilot.system.ui.lib.text_measure import measure_text_cached
 

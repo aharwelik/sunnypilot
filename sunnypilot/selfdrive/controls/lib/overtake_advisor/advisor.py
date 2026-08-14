@@ -46,6 +46,10 @@ class OvertakeInputs:
   right_blind_spot: bool = False
   lane_available: bool = True
   lane_change_active: bool = False
+  road_edge_detected: bool = False
+  occupancy_known: bool = True
+  navigation_contradiction: bool = False
+  driver_monitoring_valid: bool = True
   stale_model: bool = False
   driver_brake: bool = False
   driver_gas: bool = False
@@ -121,6 +125,14 @@ class OvertakeAdvisor:
       return "DRIVER_OVERRIDE"
     if inputs.steering_fault:
       return "STEERING_FAULT"
+    if inputs.road_edge_detected:
+      return "ROAD_EDGE"
+    if not inputs.occupancy_known:
+      return "OCCUPANCY_UNKNOWN"
+    if inputs.navigation_contradiction:
+      return "NAVIGATION_CONTRADICTION"
+    if not inputs.driver_monitoring_valid:
+      return "DRIVER_MONITORING_INVALID"
     if not inputs.lane_available:
       return "LANE_UNAVAILABLE"
     if inputs.left_blind_spot or inputs.right_blind_spot:
